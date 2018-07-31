@@ -1,0 +1,78 @@
+<!-- 31-07-2018 08:05 -->
+<!-- create by sk ahmad -->
+<html>
+    <head>
+        <title>Recursive Function</title>
+        <link href="style.windows.css" rel="stylesheet" />
+        <link href="ui.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="container">
+                <h1>Java Script 9 : Recursive Function</h1>
+                <h2>In this Program print factorial of number. e.g - 5! = 1*2*3*4*5 = 120<h2>
+                <ol>
+                    <li><h3>Button Onclick Event</h3></li>
+                    <li><h3>Method Call</h3></li>
+                    <li><h3>Function Declaration</h3></li>
+                    <li><h3>Call Function inside function, Recursive Calling</h3></li>
+                    <li><h3>Parse String to Number</h3></li>
+                    <li><h3>Checking Parse Number is actullay number or Not</h3></li>
+                </ol>
+            </div><!-- end inner container 3-->
+            <div class="container">
+
+            </div><!-- end inner container 3-->
+            <div class="container">
+                <div class="container">
+                    <div class="form-group">
+                        <input type="text" class="input-control text" placeholder="Enter Number"/>
+                        <input type="button" class="input-control button" value="Calculate"/>
+                    </div>
+                </div>
+                <div class="container">
+                    <h2 id="output" />
+                </div>
+            </div><!-- end inner container 3-->
+        </div>
+    </body>
+
+    <script>
+        // getting input and output HTML elements
+        var ins = document.getElementsByTagName('input');
+        var out = document.getElementById('output');
+
+        var btncal = ins[1]; //get button element from input array
+        btncal.onclick = clickme; // setting click event on button
+
+        function clickme() { // define function, it will be called when button click
+            var val = ins[0].value; // getting value from txt box
+            if(val.length == 0) {
+                print("Enter Number to get Factorial.",1);
+                console.log(1);
+                return ;
+            }
+            val = Number.parseInt(val); // converting to Ineter Number, if it is string returns NaN
+            if(isNaN(val)){ // checking value is number or not
+                print("Entered Value is not a Number.",1);
+                return ;
+            }
+            print("",1);
+            print("Factorial of "+ val + " is : " + getFact(val));
+        }
+
+        function print(str,flag) {
+            if(flag)
+                out.innerHTML = str;
+            else
+                out.innerHTML += str;
+        }
+        // Factorial recursion method
+        function getFact(num) {
+            if(num == 1)
+                return 1;
+            return num*getFact(num-1);
+        }
+    </script>
+
+</html>

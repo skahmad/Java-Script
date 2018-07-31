@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Java Script 2: Calculate Area</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 2: Button click Event, and Method call, get Value form text Box</h1>
+        <br/>
+        <div class="container tile-small windows">
+            <input type="text" placeholder="enter radius" class="text"/>
+            <input type="button" value="click here" class="button"/>
+            <h2 id="output"></h2>
+        </div>
+    </body>
+    <script>
+        var PI = 3.14;
+        var ins = document.getElementsByTagName('input');
+        var btn = ins[1];
+        var out = document.getElementById('output');
+        btn.onclick = calculateArea;
+        function calculateArea() {
+            var radius = ins[0].value;
+            out.innerHTML = "Area is : " + (PI*radius*radius);
+        }
+    </script>
+</html>

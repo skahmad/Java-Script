@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Java Script : array push pop</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 4</h1>
+        <p>1. Button click Event</p>
+        <p>2. Method call</p>
+        <p>3. Define Array</p>
+        <p>4. Push Item to array</p>
+        <p>5. Pop item from array</p>
+        <p>6. Pass Array to the function</p>
+        <br/>
+        <div class="container tile-medium windows">
+            <input type="text" class="text" placeholder="Enter fruit name" />
+            <input type="button" value="Clear" class="button" />
+            <input type="button" value="Add This" class="button"/>
+            <input type="button" value="Delete Last" class="button" />
+        </div>
+        <div class="container tile-small windows">
+            <h3 id="output"></h3>
+        </div>
+    </body>
+    <script>
+        // define array
+        var fruits = ["Apple","Banana","Orange"];
+        // get input html object
+        var ins = document.getElementsByTagName('input');
+
+        // get button object
+        var btnclr = ins[1];
+        var btnadd = ins[2];
+        var btndel = ins[3];
+        btndel.onclick = deleteItem;
+        // setting onclick event
+        btnadd.onclick = popupMe;
+        btnclr.onclick = clearField;
+        // get output field
+        var out = document.getElementById('output');
+
+        // print array to the output
+        printR(fruits);
+
+        function popupMe() {
+            var fruit = ins[0].value;
+            // checking you entered something or not
+            // if you entered then add to the list otherwise not
+            if(fruit.length != 0) {
+                addItem(fruits, fruit);
+                printR(fruits);
+                clearField(); // clear field
+            }
+        }
+
+        // clearing text field
+        function clearField() {
+            ins[0].value = "";
+        }
+
+        // deleting item form array
+        function deleteItem() {
+            fruits.pop();
+            printR(fruits);
+        }
+
+        // addItem method define - adding item to a particuler array
+        function addItem(arr, item) {
+            // checking arr is array or not
+            // if array then push the item
+            if(Array.isArray(arr))
+                arr.push(item);
+            return;
+        }
+
+        // printR method declaration for print array
+        function printR(arr) {
+            // checking array or not
+            if(!Array.isArray(arr))
+                return;
+
+            //clearing output field
+            out.innerHTML = "";
+            // print array if 'arr' is array
+            for(var i = 0; i<arr.length; i++)
+                out.innerHTML += i + " : " + arr[i] + "<br/>";
+        }
+    </script>
+</html>

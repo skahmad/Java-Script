@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Java Script : String Methods</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 6</h1>
+        <p>1. String.charAt(index) - Extracting particuler charecter from string</p>
+        <p>2. String.charCodeAt(index) - get asscii code of charecter</p>
+        <p>3. String.indexOf(char) - first position of substring</p>
+        <p>4. String.lastIndexOf(char) - last position of the sub string</p>
+        <p>5. String.replace(String source, String destination) - replace a particuler string with another</p>
+        <p>6. String.toUpperCase() - convert to lower case</p>
+        <p>7. String.toLowerCase() - convert to upper case</p>
+        <p>8. String.substr(start_index, length) - get substsring by length</p>
+        <p>9. String.substring(start_index, end_index); - get sub string by index</p>
+        <p>9. String.split(string delimiter) - Split string by delimiter, it returns array</p>
+        <h4>65 is the ascii value of 'A'</h4>
+        <div class="container tile-medium windows">
+            <input type="text" class="text" placeholder="Enter String" />
+            <input type="button" value="Clear" class="button"/>
+            <input type="button" value="Print" class="button"/>
+        </div>
+        <div class="container tile-small windows">
+            <h3 id="output"></h3>
+        </div>
+    </body>
+    <script>
+        // get input html object
+        var ins = document.getElementsByTagName('input');
+
+        // get button object
+        var btnclr = ins[1];
+        var btncal = ins[2];
+        btnclr.onclick = clearField;
+        btncal.onclick = cal; // setting onclick event
+        // get output field
+        var out = document.getElementById('output');
+
+
+        function print(str,flag) {
+            if(flag)
+                out.innerHTML += "<br/>"+str;
+            else
+                out.innerHTML = str;
+        }
+        function cal() {
+            var val = ins[0].value;
+            if(val.length <1)
+                return;
+            print("charAt(1) : " + val.charAt(1)); //  charAt function extract char form string
+            // it acts as sring[index]
+            print("charCodeAt(1) : " + val.charCodeAt(1),1); // charCodeAt method return the ascii value
+                // of the charecter
+
+            print("String.fromCharCode(65) : " + String.fromCharCode(65),1); // it accept assscii value
+                // and returns charecter 65 is the assscii value of 'A'
+
+            print("String.indexOf('a') : " + val.indexOf('a'),1); // indexOf it returns the first index
+            print("String.lastIndexOf('a') : " + val.lastIndexOf('a'),1); // it returns last index
+            print("String.replace('a','o'): " + val.replace('a','o'),1);
+            print("String.split(' '): spliting ..." ,1);
+            printR(val.split(" "));
+            print("String.substring(1,5) : " + val.substring(1,4),1);
+            print("String.toLowerCase() : " + val.toLowerCase(),1);
+            print("String.toUpperCase() : " +val.toUpperCase(),1);
+            print("Stirng.substr(1,6) : " + val.substr(1,6),1);
+        }
+
+        // clearing text field
+        function clearField() {
+            ins[0].value = "";
+        }
+        function printR(arr) {
+            // checking array or not
+            if(!Array.isArray(arr))
+                return;
+            // print array if 'arr' is array
+
+            for(var i = 0; i<arr.length; i++)
+                print(i+". "+arr[i],1);
+        }
+    </script>
+</html>

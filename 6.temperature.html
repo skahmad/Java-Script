@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Java Script : Conver Km mile vise versa</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 6</h1>
+        <p>1. Button click Event</p>
+        <p>2. Method call</p>
+        <p>3. Convert string to float</p>
+        <p>4. Checking number is actually number or not</p>
+        <p>5. If else</p>
+        <p>6. Conditional Operator </p>
+        <br/>
+        <div class="container tile-medium windows">
+            <input type="text" class="text" placeholder="Enter Temperature" />
+            <input type="button" value="Clear" class="button"/>
+            <input type="button" value="Print" class="button"/>
+        </div>
+        <div class="container tile-small windows">
+            <h3 id="output"></h3>
+        </div>
+    </body>
+    <script>
+        // get input html object
+        var ins = document.getElementsByTagName('input');
+
+        // get button object
+        var btnclr = ins[1];
+        var btncal = ins[2];
+        btnclr.onclick = clearField;
+        btncal.onclick = cal; // setting onclick event
+        // get output field
+        var out = document.getElementById('output');
+
+
+        function print(str) {
+            out.innerHTML = str;
+        }
+        function cal() {
+            var val = ins[0].value;
+            val = Number.parseFloat(val); // converting to float
+            if(isNaN(val)) {
+                print("It is Not a Number.");
+                return;
+            }
+            if(val>30){
+                print("It is Hot Day.");
+            }else if((val>20) && (val<=30)){
+                print("Nice Day.");
+            }else{
+                print("Cold Day.");
+            }
+        }
+
+        // clearing text field
+        function clearField() {
+            ins[0].value = "";
+        }
+    </script>
+</html>

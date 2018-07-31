@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Java Script : button click, function call</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 1: Button click Event, and Method call</h1>
+        <br/>
+        <input type="button" value="click here"/>
+    </body>
+    <script>
+        var btn = document.getElementsByTagName('input')[0];
+        btn.onclick = popupMe;
+        function popupMe() {
+            alert("This is a Java Script Function.");
+        }
+    </script>
+</html>

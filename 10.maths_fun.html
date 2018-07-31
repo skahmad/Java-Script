@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>Java Script : Use Math Object</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="header">Java Script : Maths Function</h1>
+            <div class="row">
+                <ol class="list">
+                    <li><h3>Function Declaration</h3></li>
+                    <li><h3>Calling Function</h3></li>
+                    <li><h3>Button Event</h3></li>
+                    <li><h3>Setting Multiple Event using loop</h3></li>
+                    <li><h3>Switch-Case for filter button click</h3></li>
+                    <li><h3>Trim String , Removing white space</h3></li>
+                    <li><h3>Convert string to interger</h3></li>
+                    <li><h3>Generating list of integer fron string by split</h3></li>
+                </ol>
+                <ol class="list">
+                    <li><h3>Math.sin(), math.asin(), Math.asinh()</h3></li>
+                    <li><h3>Math.cos(), Math.acos(), Math.cosh()</h3></li>
+                    <li><h3>Math.tan(), Math.atan(), Math.atan2(), Math.atanh()</h3></li>
+                    <li><h3>Math.abs(), Math.max(), Math.min(), Math.pow()</h3></li>
+                    <li><h3>Math.random(), math.round(), Math.log()</h3></li>
+                    <li><h3>Array.reduce(function(a,b) {})</h3></li>
+                </ol>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 2.0009"/>
+                        <input type="button" class="input-control button" value="abs" />
+                    </div>
+                    <p class="output">It Print Absolute Value of Number</p>
+                </div>
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 5 6 7 8"/>
+                        <input type="button" class="input-control button" value="max" />
+                    </div>
+                    <p class="output">It returns Maximum number of a range</p>
+                </div>
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 2 3"/>
+                        <input type="button" class="input-control button" value="pow" />
+                    </div>
+                    <p class="output">It returns power of base  with exponent</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 5 10"/>
+                        <input type="button" class="input-control button" value="random" />
+                    </div>
+                    <p class="output">It generate random number in a range</p>
+                </div>
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 45"/>
+                        <input type="button" class="input-control button" value="sin" />
+                    </div>
+                    <p class="output">It returns the 'sin' value of a number</p>
+                </div>
+                <div class="container tile-small">
+                    <div class="form-froup">
+                        <input type="text" class="input-conntrol text" placeholder="e.g: 64"/>
+                        <input type="button" class="input-control button" value="sqrt" />
+                    </div>
+                    <p class="output">It returns squre root of a number</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        var ins = document.getElementsByTagName('input');
+        var outs = document.querySelectorAll('.output');
+        // console.log(outs);
+        // console.log(ins);
+
+        var btnId = -1; // store posion of button when click on button;
+        for(var i=0; i<ins.length; i++) { // loop through all input element
+            if(i%2 != 0) { // filtering only button not text box
+                ins[i].onclick = clickbtn; // setting click event on button
+            }
+        }
+        function clickbtn() {
+            // filtering button click, which button is clicked
+            switch(this.value) { // this means which button calling clickbtn function
+                case 'sin': sinf(8,4);break; // this block execute when sin btn is clicked
+                case 'abs': absf(0,0,2);break;
+                case 'sqrt': sqrtf(10,5,3);break;
+                case 'random': randf(6,3);break;
+                case 'pow': powf(4,2);break;
+                case 'max': maxf(2,1);break;
+            }
+        }
+        function print(parent, str,b) {
+            if(b)
+                parent.innerHTML += str;
+            else
+                parent.innerHTML =str;
+        }
+
+        function sqrtf(inid,outid) {
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Value",1);
+                return;
+            }
+            val = Number(val);
+            if(isNaN(val)){
+                print(outs[outid],"It is Not a Numer",1);
+                return;
+            }
+            print(outs[outid],"Squre root of "+ val + " is : " + Math.sqrt(val),1);
+            return ;
+        }
+        function absf(inid, outid) {
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Value");
+                return;
+            }
+            val = Number(val); // parsing to Integer number or not
+            if(isNaN(val)) { // checking it is a number or not
+                print(outs[outid],"It is Not a Number");
+                return ;
+            }
+            print(outs[outid],"Absolute value : " + val);
+            return ;
+        }
+        function maxf(inid, outid) {
+            print(outs[outid],"");
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Number range",1);
+                return;
+            }
+            val = val.trim(" "); // removind white space
+            var list = val.split(" "); // listing numbers
+            if(list.length <2) {
+                print(outs[outid],"Require more then two numbers");
+                return;
+            }
+            for(var i=0; i<list.length; i++) {
+                if(isNaN(list[i])) {
+                    print(outs[outid],"One of them is not a number");
+                    return;
+                }
+            }
+            var max = list.reduce(function(a,b) {
+                return Math.max(a,b);
+            });
+            print(outs[outid],"Max is : " + max);
+            return ;
+        }
+        function powf(inid, outid) {
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Base and Power");
+                return;
+            }
+            val = val.trim(" ");
+            var list = val.split(" ");
+            if(list.length >2) {
+                print(outs[outid],"Require less then two numbers");
+                return;
+            }
+            for(var i=0; i<list.length; i++) {
+                if(isNaN(list[i])) {
+                    print(outs[outid],"One of them is not a number");
+                    return;
+                }
+            }
+            print(outs[outid],list[0]+"^"+list[1]+" = " + Math.pow(list[0],list[1]));
+            return ;
+        }
+        function randf(inid, outid) {
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Numbe - Number");
+                return;
+            }
+            val = val.trim(" "); // rmoving space
+            var list = val.split(" "); // separating numbers
+            if(list.length >2) { // checking entered two or more number
+                print(outs[outid],"Reqire Two Number");
+                return;
+            }
+            if(isNaN(list[0]) || isNaN(list[1])) { // checking numbers are really a number or not
+                print(outs[outid],"It is Not a Number");
+                return;
+            }
+            print(outs[outid],"Random Value : " + Math.random(list[0],list[1]));
+            return ;
+        }
+        function sinf(inid, outid) {
+            var val = ins[inid].value;
+            if(val.length == 0) {
+                print(outs[outid],"Enter Degree");
+                return;
+            }
+            val = Number(val); // parsing to Integer number or not
+            if(isNaN(val)) { // checking it is a number or not
+                print(outs[outid],"It is Not a Number");
+                return ;
+            }
+            print(outs[outid],"value : " + Math.sin(val));
+            return ;
+        }
+    </script>
+</html>

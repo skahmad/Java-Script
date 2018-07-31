@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Java Script : Array join</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 8</h1>
+        <p>1. Create Array from string String.split(delimieter)</p>
+        <p>2. Joining Array using Array.join(delimiter)</p>
+        <br/>
+        <div class="container tile-medium windows">
+            <input type="text" class="text" placeholder="Enter Sentence" />
+            <input type="button" value="Clear" class="button"/>
+            <input type="button" value="generate" class="button"/>
+        </div>
+        <div class="container tile-small windows">
+            <h3 id="output"></h3>
+        </div>
+    </body>
+    <script>
+        // get input html object
+        var ins = document.getElementsByTagName('input');
+
+        // get button object
+        var btnclr = ins[1];
+        var btncal = ins[2];
+        btnclr.onclick = clearField;
+        btncal.onclick = cal; // setting onclick event
+        // get output field
+        var out = document.getElementById('output');
+
+
+        function print(str,flag) {
+            if(flag)
+                out.innerHTML += str + "<br/>";
+            else
+                out.innerHTML = str;
+        }
+        function cal() {
+            var val = ins[0].value;
+            print("create array from string ...",1);
+            print("printing the array ...",1);
+            let words = val.split(" ");
+            printR(words);
+            print("Joining the array into a string with '|' delemiter...",1);
+            print("generated string : " + words.join("|"),1);
+        }
+
+        // clearing text field
+        function clearField() {
+            ins[0].value = "";
+        }
+        function printR(arr) {
+            // checking array or not
+            if(!Array.isArray(arr))
+                return;
+            print("-----------",1);
+            // print array if 'arr' is array
+            for(var i = 0; i<arr.length; i++)
+                print(i + ". " + arr[i],1);
+            print("------------",1);
+        }
+    </script>
+</html>

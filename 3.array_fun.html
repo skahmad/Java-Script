@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Java Script : Pass Array to fun..</title>
+        <link rel="stylesheet" href="style.windows.css" />
+    </head>
+    <body>
+        <h1>Java Script 3</h1>
+        <h2>1. define array</h2>
+        <h2>2. pass Array to function</h2>
+        <h2>3. Check the object is array or not</h2>
+        <br/>
+        <input type="button" value="click here to print array" class="button"/>
+        <h2 id="output"></h1>
+    </body>
+    <script>
+        // defining array
+        var fruits = new Array("Apple","Banana","Orange","Mango","Grap");
+        var animals = ["Dog","Cow","Tiger","Lion","Elephant"];
+
+        // get input html object
+        var btn = document.getElementsByTagName('input')[0];
+        // getting html object for output
+        var out = document.getElementById("output");
+        // setting onclick event on button when click the cllme method will be invoked
+        btn.onclick = callme;
+
+        // callme function defalration
+        function callme() {
+            out.innerHTML = "Fruits Array<br/>----------------<br/>";
+            printR(fruits);
+            out.innerHTML += "<br/>Animals Array<br/>------------------<br/>";
+            printR(animals);
+        }
+        // printR method declaration for print array
+        function printR(arr) {
+            // checking array or not
+            if(!Array.isArray(arr))
+                return;
+            // print array if 'arr' is array
+            for(var i = 0; i<arr.length; i++)
+                out.innerHTML += i + " : " + arr[i] + "<br/>";
+        }
+    </script>
+</html>
